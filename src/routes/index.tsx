@@ -1,0 +1,54 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { ArrowDown, ArrowRight, ArrowUpRight, UsersRound, Landmark, Wallet, MessageCircle, ClipboardCheck, ShieldCheck, HeartHandshake, MapPin, Check, Building2 } from 'lucide-react';
+import { Header, Footer, WhatsAppButton, FloatingWhatsApp } from '@/components/campolina-shared';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import { messages, mapsUrl } from '@/lib/campolina';
+import conversation from '@/assets/campolina-conversa.jpg';
+
+const title = 'Campolina Consignado | Crédito com orientação e atendimento próximo';
+const description = 'Conheça as opções de crédito consignado para aposentados, pensionistas e servidores públicos, além de antecipação do FGTS. Fale com a Campolina pelo WhatsApp.';
+
+export const Route = createFileRoute('/')({
+  component: Index,
+  head: () => ({ meta: [{ title }, { name: 'description', content: description }, { property: 'og:title', content: title }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }], links: [{ rel: 'canonical', href: '/' }] }),
+});
+
+const solutions = [
+  { icon: UsersRound, category: 'APOSENTADOS E PENSIONISTAS', title: 'Crédito para aposentados e pensionistas.', description: 'Consulte as possibilidades de empréstimo consignado de acordo com sua situação, margem disponível e regras aplicáveis ao seu benefício.', message: messages.retirees },
+  { icon: Landmark, category: 'SERVIDORES PÚBLICOS E FEDERAIS', title: 'Crédito para servidores públicos.', description: 'Conheça as possibilidades de crédito consignado para servidores públicos e federais, conforme o vínculo, a margem disponível e as condições aplicáveis.', message: messages.publicServants },
+  { icon: Wallet, category: 'SAQUE-ANIVERSÁRIO', title: 'Antecipação do FGTS.', description: 'Entenda como funciona a antecipação do Saque-Aniversário do FGTS e consulte as condições, os requisitos e as possibilidades disponíveis para você.', message: messages.fgts },
+];
+const differences = [
+  { icon: HeartHandshake, title: 'Atendimento próximo', text: 'Converse com nossa equipe e tire suas dúvidas antes de tomar uma decisão.' },
+  { icon: MessageCircle, title: 'Orientação clara', text: 'Entenda as etapas, os critérios e as condições da modalidade consultada.' },
+  { icon: ClipboardCheck, title: 'Análise do seu perfil', text: 'As opções são verificadas de acordo com as informações e os critérios aplicáveis a cada caso.' },
+  { icon: PhoneIcon, title: 'Contato facilitado', text: 'Comece sua conversa pelo WhatsApp e receba orientação sobre os próximos passos.' },
+];
+function PhoneIcon({ className }: { className?: string }) { return <MessageCircle className={className} />; }
+const steps = [
+  ['Entre em contato', 'Clique no WhatsApp e informe qual modalidade deseja consultar.'],
+  ['Entenda as possibilidades', 'Nossa equipe orientará você sobre os requisitos e as opções que podem estar disponíveis para o seu perfil.'],
+  ['Avalie as condições', 'Confira as condições apresentadas, incluindo taxas, parcelas, prazo e custo total, antes de decidir pela contratação.'],
+];
+const faqs = [
+  ['Quem pode consultar as opções de crédito?', 'A disponibilidade depende da modalidade, do perfil do solicitante e dos critérios aplicáveis. Entre em contato para entender quais opções podem estar disponíveis para você.'],
+  ['A contratação é garantida?', 'Não. A contratação depende da análise e do cumprimento dos requisitos aplicáveis a cada modalidade.'],
+  ['Como saber quais condições estão disponíveis para mim?', 'Entre em contato com nossa equipe para consultar as possibilidades. As condições devem ser apresentadas antes de qualquer decisão de contratação.'],
+  ['Posso tirar dúvidas sem ir até o escritório?', 'Sim. Você pode iniciar seu atendimento pelo WhatsApp e verificar com nossa equipe como prosseguir.'],
+  ['Como funciona a antecipação do FGTS?', 'A antecipação do Saque-Aniversário é uma modalidade de crédito que utiliza os valores futuros elegíveis do FGTS conforme as regras aplicáveis. A disponibilidade depende dos requisitos vigentes e das condições da operação. Consulte nossa equipe para entender as possibilidades.'],
+  ['Onde fica a Campolina?', 'Estamos na Avenida Guarapari, 37, sala 07, na região da Pampulha, em Belo Horizonte/MG.'],
+];
+
+function Index() {
+  return <><Header /><main id="main-content">
+    <section className="hero" aria-labelledby="hero-title"><img className="hero-image" src={conversation} alt="Casal conversando e consultando o celular em casa" width={1600} height={1008} fetchPriority="high" /><div className="hero-veil" /><div className="page-container hero-inner"><div className="hero-content"><span className="eyebrow"><span className="eyebrow-line" />CAMPOLINA CONSIGNADO</span><h1 id="hero-title">Crédito com<br />orientação clara e<br /><span className="highlight">atendimento próximo.</span></h1><p className="hero-description">Conheça as opções de crédito para aposentados, pensionistas e servidores públicos. Nossa equipe ajuda você a entender as alternativas disponíveis para o seu perfil.</p><div className="hero-actions"><WhatsAppButton>Consultar opções pelo WhatsApp</WhatsAppButton><a className="text-link" href="#solucoes">Conhecer nossas soluções <ArrowDown /></a></div><p className="hero-support"><ShieldCheck /><span>Atendimento personalizado para esclarecer dúvidas<br className="desktop-break" /> e orientar você durante o processo.</span></p></div></div><div className="hero-caption"><span className="caption-line" />Uma boa decisão começa com uma conversa.</div></section>
+    <div className="trust-strip"><div className="page-container trust-inner"><span><HeartHandshake />Atendimento humanizado</span><span><MessageCircle />Orientação sem complicação</span><span><MapPin />Na Pampulha, em Belo Horizonte</span></div></div>
+    <section id="solucoes" className="section solutions-section"><div className="page-container"><div className="section-heading centered"><span className="eyebrow">SOLUÇÕES DE CRÉDITO</span><h2>Encontre a opção mais<br className="desktop-break" /> adequada para você.</h2><p>Cada modalidade possui critérios e condições específicos. Conheça as principais<br className="desktop-break" /> soluções que a Campolina pode ajudar você a consultar.</p></div><div className="solutions-grid">{solutions.map(({ icon: Icon, ...solution }, i) => <article className="solution-card" key={solution.category}><div className="solution-top"><span className="icon-tile"><Icon /></span><span className="card-number">0{i + 1}</span></div><span className="card-category">{solution.category}</span><h3>{solution.title}</h3><p>{solution.description}</p><WhatsAppButton outline message={solution.message}>Consultar pelo WhatsApp</WhatsAppButton></article>)}</div><p className="eligibility-note"><ShieldCheck />Opções sujeitas a análise, elegibilidade e condições aplicáveis.</p></div></section>
+    <section className="section differences-section"><div className="page-container"><div className="differences-heading"><div><span className="eyebrow">DO SEU LADO, EM CADA ETAPA</span><h2>Mais clareza para<br />tomar sua decisão.</h2></div><p>Antes de escolher, é importante entender.<br />Conte com uma conversa atenta e transparente.</p></div><div className="differences-grid">{differences.map(({ icon: Icon, title, text }) => <div className="difference-item" key={title}><Icon /><h3>{title}</h3><p>{text}</p></div>)}</div></div></section>
+    <section id="como-funciona" className="section steps-section"><div className="page-container"><div className="section-heading centered"><span className="eyebrow">SIMPLES, DO PRIMEIRO CONTATO À DECISÃO</span><h2>Comece sua consulta<br />em poucos passos.</h2></div><div className="steps-grid">{steps.map(([heading, text], i) => <div className="step" key={heading}><div className="step-number"><span>0{i + 1}</span>{i < 2 && <ArrowRight />}</div><h3>{heading}</h3><p>{text}</p></div>)}</div><div className="centered"><WhatsAppButton>Falar com a Campolina</WhatsAppButton></div></div></section>
+    <section id="contato" className="contact-section"><div className="page-container contact-grid"><div className="contact-copy"><span className="eyebrow">ATENDIMENTO PRESENCIAL</span><h2>Estamos prontos<br />para receber você.</h2><p>Se preferir um atendimento presencial, venha conhecer nosso espaço na região da Pampulha, em Belo Horizonte. Será um prazer receber você, esclarecer suas dúvidas e orientar sobre as opções disponíveis.</p><WhatsAppButton message={messages.appointment}>Agendar atendimento pelo WhatsApp</WhatsAppButton></div><div className="location-panel"><div className="location-symbol"><Building2 /></div><span className="location-label">CAMPOLINA CONSIGNADO</span><h3>Um ponto de encontro<br />para suas dúvidas.</h3><div className="location-address"><MapPin /><p>Avenida Guarapari, 37, sala 07<br /><strong>Pampulha — Belo Horizonte/MG</strong></p></div><Button asChild variant="outline" className="map-button"><a href={mapsUrl} target="_blank" rel="noopener noreferrer">Ver localização no mapa <ArrowUpRight /></a></Button></div></div></section>
+    <section id="duvidas" className="section faq-section"><div className="page-container faq-grid"><div className="faq-heading"><span className="eyebrow">PERGUNTAS FREQUENTES</span><h2>Tire suas dúvidas.</h2><p>Informação clara para seguir<br className="desktop-break" /> com mais tranquilidade.</p><div className="faq-contact"><MessageCircle /><h3>Ainda tem dúvidas?<br />Converse com nossa equipe.</h3><WhatsAppButton outline>Falar pelo WhatsApp</WhatsAppButton></div></div><Accordion type="single" collapsible className="faq-accordion">{faqs.map(([question, answer], i) => <AccordionItem key={question} value={`question-${i}`}><AccordionTrigger className="faq-trigger"><span className="faq-question"><span className="faq-index">0{i + 1}</span>{question}</span></AccordionTrigger><AccordionContent className="faq-answer">{answer}</AccordionContent></AccordionItem>)}</Accordion></div></section>
+    <section className="final-cta"><div className="page-container final-inner"><div><span className="eyebrow">O PRÓXIMO PASSO É UMA CONVERSA</span><h2>Vamos conversar sobre<br />suas possibilidades?</h2><p>Entre em contato com a Campolina, esclareça suas dúvidas e conheça<br className="desktop-break" /> as opções que podem fazer sentido para o seu perfil.</p></div><div className="final-action"><WhatsAppButton message={messages.specialist}>Falar com um especialista</WhatsAppButton><span><Check />Uma conversa, sem compromisso de contratação.</span></div></div></section>
+  </main><Footer /><FloatingWhatsApp /></>;
+}
